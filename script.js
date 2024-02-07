@@ -32,21 +32,28 @@ document.addEventListener("DOMContentLoaded", function() {
       var daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
       var weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-      var headerRow = document.createElement('div');
+      var table = document.createElement('table');
+      table.classList.add('calendar-table');
+
+      var headerRow = document.createElement('tr');
       headerRow.classList.add('week-header');
       weekdays.forEach(function(day) {
-        var dayDiv = document.createElement('div');
-        dayDiv.textContent = day;
-        headerRow.appendChild(dayDiv);
+        var th = document.createElement('th');
+        th.textContent = day;
+        headerRow.appendChild(th);
       });
-      calendar.appendChild(headerRow);
+      table.appendChild(headerRow);
 
       for (var i = 1; i <= daysInMonth; i++) {
         var dayDiv = document.createElement('div');
         dayDiv.classList.add('calendar-day');
         dayDiv.textContent = i;
-        calendar.appendChild(dayDiv);
+        var td = document.createElement('td');
+        td.appendChild(dayDiv);
+        headerRow.appendChild(td);
       }
+
+      calendar.appendChild(table);
 
       startDate.setMonth(startDate.getMonth() + 1); // Move to next month
     }

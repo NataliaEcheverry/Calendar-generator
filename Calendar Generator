@@ -15,7 +15,7 @@
     <button id="generate-calendar">Generate Calendar</button>
   </div>
 
-  <div id="calendar"></div>
+  <div id="calendar" role="table" aria-label="Calendar"></div>
 
   <script src="script.js"></script>
 </body>
